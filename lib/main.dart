@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void Check() async {
-    print('Hello');
+    print('Halla');
     try {
       final DatabaseReference reciever = FirebaseDatabase.instance.ref();
       reciever.onChildAdded.listen((event) async {
