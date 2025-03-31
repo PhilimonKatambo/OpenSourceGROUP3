@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "293962542264",
+    "project_id": "grp3-578bd",
+    "storage_bucket": "grp3-578bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293962542264:android:1fb162b516fc824392d84d",
+        "android_client_info": {
+          "package_name": "com.example.grp3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm2ubvhRR5hm-Q1e9XqxhS-Sq5lzxDSRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
