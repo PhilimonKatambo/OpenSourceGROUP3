@@ -1,5 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'inbox.dart';
@@ -23,11 +23,41 @@ class Colls extends StatefulWidget {
 
 class _CollsState extends State<Colls> {
   List<Widget> coll = [];
-  late String user2 = "loading....";
+  String user2 = "loading....";
 
   @override
   void initState() {
     super.initState();
     Online1();
-
   }
+
+  void Online1() async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("users/${widget.name}");
+
+    final snapshot = await ref.get();
+    if (snapshot.exists) {
+      setState(() {
+        user2 = snapshot.value.toString();
+      });
+    } else {
+      setState(() {
+        user2 = "No data available";
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Welcome"),
+      ),
+      body: Center(
+        child: Text(
+          user2,
+          style: GoogleFonts.poppins(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
