@@ -46,6 +46,31 @@ class _CollsState extends State<Colls> {
     }
   }
 
+
+  void Online1() async {
+    print('Hello');
+    try {
+      final DatabaseReference reciever = FirebaseDatabase.instance.ref();
+      reciever.onChildAdded.listen((event) async {
+        var roomName = event.snapshot.key.toString().replaceAll("/", "_");
+        Update(roomName);
+      });
+    } catch (e) {
+      print("Error: $e");
+    }
+  }
+
+  void Delete(child1)async{
+    final DatabaseReference deleter=FirebaseDatabase.instance.ref();
+    deleter.child(child1).remove().then((_){
+      setState(() {
+        coll=[];
+      });
+      Online1();
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
