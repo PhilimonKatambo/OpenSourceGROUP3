@@ -31,7 +31,7 @@ class _CollsState extends State<Colls> {
     Online1(); // Only one Online1() method now
   }
 
-  // ✅ This is the only correct and retained version of Online1
+  // ✅ The correct version of Online1
   void Online1() async {
     print('Hello');
     try {
@@ -49,7 +49,6 @@ class _CollsState extends State<Colls> {
   // ✅ Stub for Update() to avoid error. You can define the real logic later.
   void Update(String roomName) {
     print("Room name: $roomName");
-    // TODO: Update UI or fetch room-specific data
   }
 
   void Delete(String child1) async {
