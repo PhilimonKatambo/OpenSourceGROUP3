@@ -28,30 +28,16 @@ class _CollsState extends State<Colls> {
   @override
   void initState() {
     super.initState();
-    Online1();
+    Online1(); // Only one Online1() method now
   }
 
-  void Online1() async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("users/${widget.name}");
-
-    final snapshot = await ref.get();
-    if (snapshot.exists) {
-      setState(() {
-        user2 = snapshot.value.toString();
-      });
-    } else {
-      setState(() {
-        user2 = "No data available";
-      });
-    }
-  }
-
-
+  // ✅ This is the only correct and retained version of Online1
   void Online1() async {
     print('Hello');
     try {
-      final DatabaseReference reciever = FirebaseDatabase.instance.ref();
-      reciever.onChildAdded.listen((event) async {
+      final DatabaseReference receiver = FirebaseDatabase.instance.ref();
+
+      receiver.onChildAdded.listen((event) async {
         var roomName = event.snapshot.key.toString().replaceAll("/", "_");
         Update(roomName);
       });
@@ -60,16 +46,21 @@ class _CollsState extends State<Colls> {
     }
   }
 
-  void Delete(child1)async{
-    final DatabaseReference deleter=FirebaseDatabase.instance.ref();
-    deleter.child(child1).remove().then((_){
+  // ✅ Stub for Update() to avoid error. You can define the real logic later.
+  void Update(String roomName) {
+    print("Room name: $roomName");
+    // TODO: Update UI or fetch room-specific data
+  }
+
+  void Delete(String child1) async {
+    final DatabaseReference deleter = FirebaseDatabase.instance.ref();
+    deleter.child(child1).remove().then((_) {
       setState(() {
-        coll=[];
+        coll = [];
       });
       Online1();
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
