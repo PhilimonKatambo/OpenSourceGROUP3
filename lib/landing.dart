@@ -62,6 +62,26 @@ class _CollsState extends State<Colls> {
     });
   }
 
+  void showAlertDialog(BuildContext context, msg) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Notice"),
+          content: Text(msg),
+          actions: [
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
