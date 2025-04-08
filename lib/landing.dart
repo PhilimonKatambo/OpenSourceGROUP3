@@ -81,6 +81,61 @@ class _CollsState extends State<Colls> {
     );
   }
 
+     void Update(String roomName) async {
+     setState(() {
+       coll.add(
+         GestureDetector(
+           onTap: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context) {
+               return Chat(roomName: roomName,sender: widget.name);
+             }));
+           },
+           child: Container(
+             width: double.infinity,
+             padding: EdgeInsets.symmetric(vertical: 15, horizontal: 0),
+             child: Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 IconButton(
+                   onPressed: () {},
+                   icon: Icon(Icons.person),
+                   color: Color(0xff0fd4fe),
+                 ),
+                 Column(children: [
+                   Text(
+                     roomName.toUpperCase(),
+                     style: GoogleFonts.roboto(
+                       textStyle: const TextStyle(
+                         color: Color(0xff0fd4fe),
+                         fontSize: 15,
+                       ),
+                     ),
+                   ),
+                 ]),
+                 IconButton(
+                   onPressed: () {
+                     widget.name.toLowerCase()==roomName.toLowerCase()?Delete(roomName):showAlertDialog(context, "Can't delete others inboxes");
+                   },
+                   icon: Icon(
+                     widget.name.toLowerCase()==roomName.toLowerCase()?Icons.delete:Icons.delete_forever_outlined,
+                     color: Color(0xff2d87af),
+                     size: 25,
+                   ),
+                 ),
+               ],
+             ),
+             decoration: BoxDecoration(
+               border: Border(
+                 bottom: BorderSide(color: Color(0xff0f6c92)),
+                 top: BorderSide(color: Color(0xff0f6c92)),
+               ),
+             ),
+           ),
+         ),
+       );
+     });
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
