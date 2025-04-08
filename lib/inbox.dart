@@ -167,3 +167,31 @@ class _ChatState extends State<Chat> {
        },
      );
    }
+
+   void showAlertDialog2(BuildContext context, msg,key) {
+     showDialog(
+       context: context,
+       builder: (BuildContext context) {
+         return AlertDialog(
+           title: Text("Notice"),
+           content: Text(msg),
+           actions: [
+             TextButton(
+               child: Text("Cancel"),
+               onPressed: () {
+                 Navigator.of(context).pop();
+               },
+             ),
+             TextButton(
+               child: Text("OK"),
+               onPressed: () {
+                 Delete(widget.roomName, key);
+                 Navigator.of(context).pop();
+               },
+             ),
+           ],
+         );
+       },
+     );
+   }
+ 
