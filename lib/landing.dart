@@ -9,7 +9,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Colls(name: "priscilladyson@gmail.com"),
+    home: Colls(name: "priscillahdyson@gmail.com"),
   ));
 }
 
